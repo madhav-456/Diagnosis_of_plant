@@ -1,12 +1,10 @@
-Flask
-flask-cors
-numpy
-pillow
-joblib
-requests
-openai   # optional
-google-genai   # optional
-groq   # optional
-pyttsx3   # optional
-speechrecognition   # optional
-gunicorn
+Flask==2.3.2
+Flask-Cors==3.1.13
+Werkzeug==2.3.8
+numpy==1.26.0
+Pillow==10.1.0
+scikit-learn==1.3.0
+joblib==1.3.2
+pyttsx3==2.90
+SpeechRecognition==3.9.0
+openai==1.32.0
