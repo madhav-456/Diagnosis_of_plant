@@ -6,10 +6,10 @@
     <title>EasyFarm | Future of Farming</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f9fafb;
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
+                    <a href="{{ url_for('home') }}" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
                     <a href="#solutions" class="text-gray-500 hover:text-green-500 text-sm font-medium">Solutions</a>
                     <a href="#technology" class="text-gray-500 hover:text-green-500 text-sm font-medium">Technology</a>
                     <a href="#team" class="text-gray-500 hover:text-green-500 text-sm font-medium">Team</a>
@@ -104,10 +104,10 @@
                     </div>
                 </div>
 
-                <!-- ⭐ MEDIUM-HEIGHT HERO IMAGE FIXED ⭐ -->
+                <!-- HERO IMAGE -->
                 <div class="md:w-1/2 flex justify-center">
-                     <img src="{{ url_for('static', filename='images/nordic_plant.png') }}" alt="Logo"
-                         class="rounded-xl shadow-2xl border-4 border-white h-80 object-contain">
+                    <img src="{{ url_for('static', filename='images/nordic_plant.png') }}" alt="Logo"
+                        class="rounded-xl shadow-2xl border-4 border-white h-80 object-contain">
                 </div>
 
             </div>
@@ -131,35 +131,35 @@
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Voice Assistant AI</h3>
                     <p class="text-gray-500 mb-4">Get farming advice instantly.</p>
-                    <a href="ai_assistant5.html" class="text-green-500">Try Now →</a>
+                    <a href="{{ url_for('ai_page') }}" class="text-green-500">Try Now →</a>
                 </div>
 
                 <!-- Disease Prediction -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Crop Disease Prediction</h3>
                     <p class="text-gray-500 mb-4">Upload crop images to detect diseases.</p>
-                    <a href="DiseasePrediction3.html" class="text-green-500">Detect Now →</a>
+                    <a href="{{ url_for('disease_page') }}" class="text-green-500">Detect Now →</a>
                 </div>
 
                 <!-- Crop Recommendation -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Crop Prediction</h3>
                     <p class="text-gray-500 mb-4">Find the best crops for your soil.</p>
-                    <a href="Crop_recommendation4.html" class="text-green-500">Predict Now →</a>
+                    <a href="{{ url_for('crop_page') }}" class="text-green-500">Predict Now →</a>
                 </div>
 
                 <!-- Fertilizer -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Fertilizer Advisor</h3>
                     <p class="text-gray-500 mb-4">Get fertilizer recommendations.</p>
-                    <a href="Fertilizer_recommendation2.html" class="text-green-500">Get Advice →</a>
+                    <a href="{{ url_for('fert_page') }}" class="text-green-500">Get Advice →</a>
                 </div>
 
                 <!-- Subsidy -->
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Subsidy Finder</h3>
                     <p class="text-gray-500 mb-4">Find available government subsidies.</p>
-                    <a href="subsidy6.html" class="text-green-500">Check Now →</a>
+                    <a href="{{ url_for('subsidy_page') }}" class="text-green-500">Check Now →</a>
                 </div>
 
             </div>
@@ -199,7 +199,3 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 text-center">
         © 2025 EasyFarm — All rights reserved.
-    </footer>
-
-</body>
-</html> this is landing page /index  [age make change what i should have
