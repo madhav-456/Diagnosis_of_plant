@@ -27,15 +27,14 @@ for folder in [UPLOAD_DIR, MODELS_DIR]:
         folder.mkdir(parents=True, exist_ok=True)
 
 # ------------------ Flask App ------------------
+# ------------------ Flask App ------------------
 app = Flask(
     __name__,
     static_folder=str(STATIC_DIR),
-    template_folder="templates",
+    template_folder=str(STATIC_DIR / "templates"),  # point to static/templates
     static_url_path="/static"
 )
-app.config["UPLOAD_FOLDER"] = str(UPLOAD_DIR)
-app.config["MAX_CONTENT_LENGTH"] = 12 * 1024 * 1024  # 12 MB
-CORS(app)
+
 
 # ------------------ Helpers ------------------
 def allowed_file(filename: str) -> bool:
