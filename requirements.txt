@@ -1,7 +1,12 @@
-scikit-learn
-numpy
-Pillow
-joblib
-flask
+Flask
 flask-cors
+numpy
+pillow
+joblib
+requests
+openai   # optional
+google-genai   # optional
+groq   # optional
+pyttsx3   # optional
+speechrecognition   # optional
 gunicorn
