@@ -27,15 +27,12 @@ for folder in [UPLOAD_DIR, MODELS_DIR]:
         folder.mkdir(parents=True, exist_ok=True)
 
 # ------------------ Flask App ------------------
-# ------------------ Flask App ------------------
 app = Flask(
     __name__,
     static_folder=str(STATIC_DIR),
-    template_folder=str(STATIC_DIR / "templates"),  # point to static/templates
+    template_folder=str(BASE_DIR / "templates"),  # <- point to the new templates folder
     static_url_path="/static"
 )
-
-
 # ------------------ Helpers ------------------
 def allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXT
