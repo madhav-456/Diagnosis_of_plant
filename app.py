@@ -16,11 +16,10 @@ MODELS_DIR = BASE_DIR / "models"
 
 ALLOWED_EXT = {"png", "jpg", "jpeg", "gif"}
 
-# Create folders safely (handles existing files too)
+# Create folders safely
 for folder in [UPLOAD_DIR, MODELS_DIR]:
     if folder.exists():
         if not folder.is_dir():
-            # If a file exists with the same name, remove it first
             folder.unlink()
             folder.mkdir(parents=True, exist_ok=True)
     else:
@@ -30,9 +29,14 @@ for folder in [UPLOAD_DIR, MODELS_DIR]:
 app = Flask(
     __name__,
     static_folder=str(STATIC_DIR),
-    template_folder=str(BASE_DIR / "templates"),  # <- point to the new templates folder
+    template_folder=str(BASE_DIR / "templates"),
     static_url_path="/static"
 )
+CORS(app)  # Enable CORS
+
+# Print template folder path for debug
+print("Template folder:", app.template_folder)
+
 # ------------------ Helpers ------------------
 def allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXT
@@ -50,7 +54,7 @@ def load_model(filename: str):
         return None
 
 DISEASE_MODEL = load_model("disease_model.pkl")
-FERT_MODEL = load_model("fertilizer_model.pkl")
+FERT_MODEL = load_model("fertilizer_model.pkl")  # Ensure this file exists
 CROP_MODEL = load_model("crop_model.pkl")
 
 # ------------------ Prediction Helpers ------------------
@@ -135,7 +139,7 @@ def subsidy_page():
 # ------------------ Static Files ------------------
 @app.route("/image/<path:filename>")
 def image_files(filename):
-    return send_from_directory(STATIC_DIR / "image", filename)
+    return send_from_directory(STATIC_DIR / "images", filename)  # fixed folder name
 
 @app.route("/css/<path:filename>")
 def css_files(filename):
@@ -203,4 +207,3 @@ def not_found(err):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))  # Render uses $PORT
     app.run(host="0.0.0.0", port=port)
-
