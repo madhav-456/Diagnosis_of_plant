@@ -1,0 +1,9 @@
+/* static/css/style.css - minimal, you can expand */
+body { font-family: Poppins, Arial, sans-serif; background:#f9fafb; margin:0; }
+.container { max-width:1100px; margin:0 auto; padding:20px; }
+.header { display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
+.card { background:white; border-radius:10px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+.btn { background:#10b981; color:white; padding:10px 14px; border-radius:8px; border:none; cursor:pointer; }
+input, select, textarea { width:100%; padding:10px; margin-top:8px; margin-bottom:12px; border:1px solid #e5e7eb; border-radius:8px; }
+.result { background:#f3f4f6; padding:12px; border-radius:8px; margin-top:8px; }
+.top-space { padding-top:80px; }
