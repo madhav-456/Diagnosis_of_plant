@@ -1,5 +1,6 @@
 # Build essentials for Python packages
-setuptools>=65.0.0
+pip>=23.0
+setuptools>=65.5
 wheel
 
 # Web framework and server
