@@ -172,5 +172,6 @@ def api_fert():
 
 # -------------------- START --------------------
 if __name__ == "__main__":
-    logger.info(f"Starting server on port {PORT}")
-    app.run(host="0.0.0.0", port=PORT)
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)
+
