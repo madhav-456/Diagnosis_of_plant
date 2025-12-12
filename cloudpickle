@@ -1,0 +1,9 @@
+import cloudpickle
+
+# Save model
+with open("disease_model.pkl", "wb") as f:
+    cloudpickle.dump(model, f)
+
+# Load model
+with open("disease_model.pkl", "rb") as f:
+    model = cloudpickle.load(f)
