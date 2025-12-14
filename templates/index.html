@@ -65,6 +65,7 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
+                    <!-- Fixed route link for Flask -->
                     <a href="{{ url_for('home') }}" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
                     <a href="#solutions" class="text-gray-500 hover:text-green-500 text-sm font-medium">Solutions</a>
                     <a href="#team" class="text-gray-500 hover:text-green-500 text-sm font-medium">Team</a>
@@ -102,7 +103,7 @@
                     </div>
                 </div>
 
-                <!-- HERO IMAGE -->
+                <!-- HERO IMAGE fixed for Flask -->
                 <div class="md:w-1/2 flex justify-center">
                     <img src="{{ url_for('static', filename='images/nordic_plant.png') }}" alt="Logo"
                         class="rounded-xl shadow-2xl border-4 border-white h-80 object-contain">
@@ -162,6 +163,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- TEAM SECTION -->
     <section class="team-section" id="team">
