@@ -170,61 +170,35 @@
 
 <!-- ================= SCRIPT ================= -->
 <script>
-    const subsidyData = [
-        {
-            id: 1,
-            name: "PM-KISAN",
-            type: "Central Sector",
-            description: "₹6000 yearly income support to farmers"
-        },
-        {
-            id: 2,
-            name: "PMFBY",
-            type: "Centrally Sponsored",
-            description: "Crop insurance scheme for farmers"
-        },
-        {
-            id: 3,
-            name: "Kisan Credit Card",
-            type: "Central Sector",
-            description: "Easy credit access for farmers"
-        }
-    ];
+const form = document.getElementById("subsidyForm");
+const resultsDiv = document.getElementById("subsidyResults");
 
-    function renderSubsidies(data) {
-        const container = document.getElementById("subsidyResults");
-        container.innerHTML = "";
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        data.forEach(s => {
-            const badgeClass =
-                s.type === "Central Sector"
-                    ? "central-sector"
-                    : s.type === "Centrally Sponsored"
-                    ? "centrally-sponsored"
-                    : "krishonnati";
+    const state = document.getElementById("state").value;
+    const crop = document.getElementById("crop").value;
 
-            container.innerHTML += `
-                <div class="bg-white rounded-xl shadow-md p-6 subsidy-card relative">
-                    <span class="scheme-type-badge ${badgeClass}">
-                        ${s.type}
-                    </span>
-                    <h3 class="text-xl font-bold mb-2">${s.name}</h3>
-                    <p class="text-gray-600">${s.description}</p>
-                </div>
-            `;
-        });
-    }
-
-    document.getElementById("searchBox").addEventListener("input", e => {
-        const keyword = e.target.value.toLowerCase();
-        const filtered = subsidyData.filter(s =>
-            s.name.toLowerCase().includes(keyword) ||
-            s.description.toLowerCase().includes(keyword)
-        );
-        renderSubsidies(filtered);
+    const res = await fetch("/api/subsidies", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ state, crop })
     });
 
-    renderSubsidies(subsidyData);
+    const data = await res.json();
+
+    resultsDiv.innerHTML = "";
+
+    data.schemes.forEach(s => {
+        resultsDiv.innerHTML += `
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold">${s.name}</h3>
+                <p class="text-sm text-gray-500">${s.type}</p>
+                <p class="mt-2 text-gray-700">${s.description}</p>
+            </div>
+        `;
+    });
+});
 </script>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
