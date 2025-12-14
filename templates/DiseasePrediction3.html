@@ -28,18 +28,9 @@
         }
         
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
-            }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
         }
         
         .result-card {
@@ -74,11 +65,11 @@
                     </div>
                 </div>
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
-                    <a href="/" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Home</a>
-                    <a href="#" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Solutions</a>
-                    <a href="#" class="text-green-500 px-3 py-2 text-sm font-medium">Disease Detection</a>
-                    <a href="#" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">About</a>
-                    <a href="#" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Contact</a>
+                    <a href="{{ url_for('home') }}" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="{{ url_for('solutions_page') }}" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Solutions</a>
+                    <a href="{{ url_for('disease_page') }}" class="text-green-500 px-3 py-2 text-sm font-medium">Disease Detection</a>
+                    <a href="{{ url_for('about_page') }}" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="{{ url_for('contact_page') }}" class="text-gray-500 hover:text-green-500 px-3 py-2 text-sm font-medium">Contact</a>
                 </div>
                 <div class="flex items-center">
                     <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
@@ -273,10 +264,10 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Solutions</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-green-500">Voice Assistant</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-500">Crop Prediction</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-500">Disease Detection</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-500">Subsidy Finder</a></li>
+                        <li><a href="{{ url_for('assistant_page') }}" class="text-gray-400 hover:text-green-500">Voice Assistant</a></li>
+                        <li><a href="{{ url_for('crop_page') }}" class="text-gray-400 hover:text-green-500">Crop Prediction</a></li>
+                        <li><a href="{{ url_for('disease_page') }}" class="text-gray-400 hover:text-green-500">Disease Detection</a></li>
+                        <li><a href="{{ url_for('subsidy_page') }}" class="text-gray-400 hover:text-green-500">Subsidy Finder</a></li>
                     </ul>
                 </div>
                 
@@ -352,15 +343,14 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
     const analyzeBtn = document.getElementById('analyzeBtn');
     const originalBtnText = analyzeBtn.innerHTML;
 
-    // Show loading
     analyzeBtn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i>Analyzing...`;
     analyzeBtn.disabled = true;
 
     const formData = new FormData();
-    formData.append("file", fileInput.files[0]);  // backend expects "file"
+    formData.append("file", fileInput.files[0]);
 
     try {
-        const response = await fetch("http://localhost:2025/api/predict_disease", {
+        const response = await fetch("{{ url_for('disease_api') }}", {
             method: "POST",
             body: formData
         });
@@ -371,24 +361,13 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
 
         const result = await response.json();
 
-        /* expected backend response:
-            {
-                "disease": "Late Blight",
-                "confidence": 92.45
-            }
-        */
-
         const prediction = result.disease || result.prediction || "Unknown Disease";
         const confidence = result.confidence ? result.confidence.toFixed(2) : 0;
 
-        // Update UI
         document.getElementById("diseaseName").textContent = prediction;
         document.getElementById("diseaseConfidence").textContent = confidence + "%";
         document.getElementById("confidenceLevel").style.width = confidence + "%";
 
-        /* ------------------------------
-            DESCRIPTIONS
-        ------------------------------ */
         const descriptions = {
             "Early Blight": "Early blight affects tomatoes and potatoes causing dark concentric leaf spots.",
             "Late Blight": "Late blight spreads rapidly in cool, wet weather and destroys leaves & stems.",
@@ -400,9 +379,6 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
         document.getElementById("diseaseDescription").textContent =
             descriptions[prediction] || "No description available.";
 
-        /* ------------------------------
-            REMEDIES
-        ------------------------------ */
         const chemicalRemedy = {
             "Early Blight": "Use chlorothalonil or mancozeb every 7 days.",
             "Late Blight": "Apply metalaxyl or copper oxychloride fungicides.",
@@ -427,19 +403,11 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
             "Healthy": "Maintain healthy soil and moisture."
         };
 
-        document.getElementById("chemicalRemedy").textContent =
-            chemicalRemedy[prediction] || "No chemical remedy available.";
+        document.getElementById("chemicalRemedy").textContent = chemicalRemedy[prediction] || "No chemical remedy available.";
+        document.getElementById("organicRemedy").textContent = organicRemedy[prediction] || "No organic remedy found.";
+        document.getElementById("preventionTips").textContent = prevention[prediction] || "General prevention recommended.";
+        document.getElementById("remedyDiseaseName").innerHTML = `For <span class="text-green-500">${prediction}</span>`;
 
-        document.getElementById("organicRemedy").textContent =
-            organicRemedy[prediction] || "No organic remedy found.";
-
-        document.getElementById("preventionTips").textContent =
-            prevention[prediction] || "General prevention recommended.";
-
-        document.getElementById("remedyDiseaseName").innerHTML =
-            `For <span class="text-green-500">${prediction}</span>`;
-
-        // Show result section
         document.getElementById("resultSection").classList.remove("hidden");
         document.getElementById("resultSection").scrollIntoView({ behavior: "smooth" });
 
