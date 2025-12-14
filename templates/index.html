@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('index') }}" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
+                    <a href="{{ url_for('home') }}" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
                     <a href="#solutions" class="text-gray-500 hover:text-green-500 text-sm font-medium">Solutions</a>
                     <a href="#technology" class="text-gray-500 hover:text-green-500 text-sm font-medium">Technology</a>
                     <a href="#team" class="text-gray-500 hover:text-green-500 text-sm font-medium">Team</a>
@@ -81,9 +81,7 @@
     <!-- HERO SECTION -->
     <section class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-white">
         <div class="max-w-7xl mx-auto">
-
             <div class="md:flex md:items-center md:justify-between">
-
                 <div class="md:w-1/2 mb-10 md:mb-0">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text">
                         <span class="block">The Future of</span>
@@ -110,7 +108,6 @@
                     <img src="{{ url_for('static', filename='images/nordic_plant.png') }}" alt="Logo"
                         class="rounded-xl shadow-2xl border-4 border-white h-80 object-contain">
                 </div>
-
             </div>
         </div>
     </section>
@@ -132,7 +129,7 @@
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Voice Assistant AI</h3>
                     <p class="text-gray-500 mb-4">Get farming advice instantly.</p>
-                    <a href="{{ url_for('ai_page') }}" class="text-green-500">Try Now →</a>
+                    <a href="{{ url_for('assistant_page') }}" class="text-green-500">Try Now →</a>
                 </div>
 
                 <!-- Disease Prediction -->
@@ -153,7 +150,7 @@
                 <div class="bg-white rounded-xl shadow-lg p-6">
                     <h3 class="text-xl font-bold">Fertilizer Advisor</h3>
                     <p class="text-gray-500 mb-4">Get fertilizer recommendations.</p>
-                    <a href="{{ url_for('fert_page') }}" class="text-green-500">Get Advice →</a>
+                    <a href="{{ url_for('fertilizer_page') }}" class="text-green-500">Get Advice →</a>
                 </div>
 
                 <!-- Subsidy -->
@@ -172,27 +169,27 @@
         <h2>Meet the Team</h2>
 
         <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png">
+            <img src="{{ url_for('static', filename='images/team1.png') }}">
             <h4>MADHAVAN</h4>
         </div>
 
         <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png">
+            <img src="{{ url_for('static', filename='images/team2.png') }}">
             <h4>LOKESH RAHUL</h4>
         </div>
 
         <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png">
+            <img src="{{ url_for('static', filename='images/team3.png') }}">
             <h4>THANESH VENKAT</h4>
         </div>
 
         <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png">
+            <img src="{{ url_for('static', filename='images/team4.png') }}">
             <h4>SHANE PRANOY</h4>
         </div>
 
         <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png">
+            <img src="{{ url_for('static', filename='images/team5.png') }}">
             <h4>AMEENUDDIN</h4>
         </div>
     </section>
