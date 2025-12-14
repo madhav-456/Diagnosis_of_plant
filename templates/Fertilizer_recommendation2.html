@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fertilizer Recommendation | AgroTech</title>
+    <title>Fertilizer Recommendation | EasyFarm</title>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,15 +37,15 @@
 <nav class="bg-white shadow-md fixed w-full z-10">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-800 flex items-center">
-            <i class="fas fa-leaf text-green-500 mr-2"></i> Agro<span class="text-green-500">Tech</span>
+            <i class="fas fa-leaf text-green-500 mr-2"></i> Easy<span class="text-green-500">Farm</span>
         </h1>
 
         <div class="hidden md:flex space-x-6">
-            <a href="/" class="text-gray-600 hover:text-green-500">Home</a>
-            <a href="#" class="text-green-500 font-semibold">Fertilizer</a>
-            <a href="#" class="text-gray-600 hover:text-green-500">Crop</a>
-            <a href="#" class="text-gray-600 hover:text-green-500">Disease</a>
-            <a href="#" class="text-gray-600 hover:text-green-500">Assistant</a>
+            <a href="{{ url_for('home') }}" class="text-gray-600 hover:text-green-500">Home</a>
+            <a href="{{ url_for('fertilizer_page') }}" class="text-green-500 font-semibold">Fertilizer</a>
+            <a href="{{ url_for('crop_page') }}" class="text-gray-600 hover:text-green-500">Crop</a>
+            <a href="{{ url_for('disease_page') }}" class="text-gray-600 hover:text-green-500">Disease</a>
+            <a href="{{ url_for('assistant_page') }}" class="text-gray-600 hover:text-green-500">Assistant</a>
         </div>
     </div>
 </nav>
@@ -175,7 +175,7 @@ document.getElementById("fertilizerForm").addEventListener("submit", async (e) =
     };
 
     try {
-        const res = await fetch("/api/fertilizer_advice", {
+        const res = await fetch("{{ url_for('fertilizer_api') }}", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
