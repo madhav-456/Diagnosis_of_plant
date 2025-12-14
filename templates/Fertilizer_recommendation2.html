@@ -175,7 +175,7 @@ document.getElementById("fertilizerForm").addEventListener("submit", async (e) =
     };
 
     try {
-        const res = await fetch("{{ url_for('fertilizer_api') }}", {
+        const res = await fetch("/fertilizer", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
