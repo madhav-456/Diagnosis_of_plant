@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasyFarm | Future of Farming</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -55,153 +56,98 @@
 
 <body>
 
-    <!-- Navigation FIXED -->
-    <nav class="bg-white shadow-sm fixed w-full z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <i class="fas fa-leaf text-green-500 text-2xl mr-2"></i>
-                    <span class="text-xl font-bold text-gray-800">Easy<span class="text-green-500">Farm</span></span>
-                </div>
+<!-- NAV -->
+<nav class="bg-white shadow-sm fixed w-full z-10">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <i class="fas fa-leaf text-green-500 text-2xl mr-2"></i>
+                <span class="text-xl font-bold">Easy<span class="text-green-500">Farm</span></span>
+            </div>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <!-- Fixed route link for Flask -->
-                    <a href="{{ url_for('home') }}" class="text-gray-900 hover:text-green-500 text-sm font-medium">Home</a>
-                    <a href="#solutions" class="text-gray-500 hover:text-green-500 text-sm font-medium">Solutions</a>
-                    <a href="#team" class="text-gray-500 hover:text-green-500 text-sm font-medium">Team</a>
-                </div>
-
-                <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium">
-                    Get Started
-                </button>
+            <div class="hidden md:flex space-x-8">
+                <a href="{{ url_for('home') }}" class="text-gray-900">Home</a>
+                <a href="#solutions" class="text-gray-500">Solutions</a>
+                <a href="#team" class="text-gray-500">Team</a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero-gradient pt-32 pb-20 px-4 sm:px-6 lg:px-8 text-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="md:flex md:items-center md:justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text">
-                        <span class="block">The Future of</span>
-                        <span class="block text-green-300">Smart Farming</span>
-                    </h1>
+<!-- HERO -->
+<section class="hero-gradient pt-32 pb-20 text-white">
+    <div class="max-w-7xl mx-auto md:flex items-center">
 
-                    <p class="text-lg md:text-xl mb-8 opacity-90">
-                        Harnessing AI, IoT, and drone technology to bring revolutionary improvements to agriculture.
-                    </p>
-
-                    <div class="flex space-x-4">
-                        <button class="bg-white text-green-600 px-6 py-3 rounded-md shadow">
-                            Watch Demo
-                        </button>
-
-                        <button class="border-2 border-white px-6 py-3 rounded-md">
-                            See Results
-                        </button>
-                    </div>
-                </div>
-
-                <!-- HERO IMAGE fixed for Flask -->
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="{{ url_for('static', filename='images/nordic_plant.png') }}" alt="Logo"
-                        class="rounded-xl shadow-2xl border-4 border-white h-80 object-contain">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOLUTIONS SECTION -->
-    <section id="solutions" class="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">
-                Smart Farming <span class="text-green-500">Tools</span>
-            </h2>
-
-            <p class="text-gray-500 mb-12">
-                Our cutting-edge solutions combine AI, IoT and data science.
+        <div class="md:w-1/2 mb-10">
+            <h1 class="text-5xl font-bold mb-6">
+                The Future of <span class="text-green-300">Smart Farming</span>
+            </h1>
+            <p class="text-xl mb-8">
+                Harnessing AI, IoT, and drone technology to improve agriculture.
             </p>
+        </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="md:w-1/2 flex justify-center">
+            <img src="{{ url_for('static', filename='images/nordic_plant.png') }}"
+                 class="h-80 rounded-xl shadow-2xl border-4 border-white">
+        </div>
 
-                <!-- Voice AI -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold">Voice Assistant AI</h3>
-                    <p class="text-gray-500 mb-4">Get farming advice instantly.</p>
-                    <a href="{{ url_for('assistant_page') }}" class="text-green-500">Try Now →</a>
-                </div>
+    </div>
+</section>
 
-                <!-- Disease Prediction -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold">Crop Disease Prediction</h3>
-                    <p class="text-gray-500 mb-4">Upload crop images to detect diseases.</p>
-                    <a href="{{ url_for('disease_page') }}" class="text-green-500">Detect Now →</a>
-                </div>
+<!-- SOLUTIONS -->
+<section id="solutions" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto text-center">
 
-                <!-- Crop Recommendation -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold">Crop Prediction</h3>
-                    <p class="text-gray-500 mb-4">Find the best crops for your soil.</p>
-                    <a href="{{ url_for('crop_page') }}" class="text-green-500">Predict Now →</a>
-                </div>
+        <h2 class="text-3xl font-bold mb-12">
+            Smart Farming <span class="text-green-500">Tools</span>
+        </h2>
 
-                <!-- Fertilizer -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold">Fertilizer Advisor</h3>
-                    <p class="text-gray-500 mb-4">Get fertilizer recommendations.</p>
-                    <a href="{{ url_for('fertilizer_page') }}" class="text-green-500">Get Advice →</a>
-                </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Subsidy -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold">Subsidy Finder</h3>
-                    <p class="text-gray-500 mb-4">Find available government subsidies.</p>
-                    <a href="{{ url_for('subsidy_page') }}" class="text-green-500">Check Now →</a>
-                </div>
-
+            <div class="bg-white p-6 shadow rounded-xl">
+                <h3 class="text-xl font-bold">Voice Assistant AI</h3>
+                <a href="{{ url_for('assistant_page') }}" class="text-green-500">Try Now →</a>
             </div>
+
+            <div class="bg-white p-6 shadow rounded-xl">
+                <h3 class="text-xl font-bold">Crop Disease Prediction</h3>
+                <a href="{{ url_for('disease_page') }}" class="text-green-500">Detect Now →</a>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-xl">
+                <h3 class="text-xl font-bold">Crop Prediction</h3>
+                <a href="{{ url_for('crop_page') }}" class="text-green-500">Predict Now →</a>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-xl">
+                <h3 class="text-xl font-bold">Fertilizer Advisor</h3>
+                <a href="{{ url_for('fertilizer_page') }}" class="text-green-500">Get Advice →</a>
+            </div>
+
+            <div class="bg-white p-6 shadow rounded-xl">
+                <h3 class="text-xl font-bold">Subsidy Finder</h3>
+                <a href="{{ url_for('subsidy_page') }}" class="text-green-500">Check Now →</a>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
+<!-- TEAM -->
+<section id="team" class="team-section">
+    <h2>Meet the Team</h2>
 
-    <!-- TEAM SECTION -->
-    <section class="team-section" id="team">
-        <h2>Meet the Team</h2>
+    <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png"><h4>MADHAVAN</h4></div>
+    <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png"><h4>LOKESH RAHUL</h4></div>
+    <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png"><h4>THANESH VENKAT</h4></div>
+    <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png"><h4>SHANE PRANOY</h4></div>
+    <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/147/147144.png"><h4>AMEENUDDIN</h4></div>
+</section>
 
-        <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Madhavan">
-            <h4>MADHAVAN</h4>
-        </div>
-
-        <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Lokesh Rahul">
-            <h4>LOKESH RAHUL</h4>
-        </div>
-
-        <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Thanesh Venkat">
-            <h4>THANESH VENKAT</h4>
-        </div>
-
-        <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Shane Pranoy">
-            <h4>SHANE PRANOY</h4>
-        </div>
-
-        <div class="team-member">
-            <img src="https://cdn-icons-png.flaticon.com/512/147/147144.png" alt="Ameenuddin">
-            <h4>AMEENUDDIN</h4>
-        </div>
-    </section>
-
-    <!-- JS -->
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 text-center">
-        © 2025 EasyFarm — All rights reserved.
-    </footer>
+<footer class="bg-gray-800 text-white py-6 text-center">
+    © 2025 EasyFarm — All rights reserved.
+</footer>
 
 </body>
 </html>
