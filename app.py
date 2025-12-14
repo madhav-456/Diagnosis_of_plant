@@ -157,9 +157,12 @@ def assistant_page():
 @app.route("/subsidy")
 def subsidy_page():
     return render_template("subsidy6.html")
-    @app.route("/solutions")
+
+@app.route("/solutions")
 def solutions_page():
+    # Make sure you have Solutions.html in the templates folder
     return render_template("Solutions.html")
+
 
 # -------------------- API ROUTES --------------------
 @app.route("/api/predict_disease", methods=["POST"])
